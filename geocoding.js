@@ -46,24 +46,6 @@
     	getLocation();
     }
 
-	function clearForm() {
-		$("#names").empty();
-	}
-
-	function formSubmit() {
-		$("#names").empty();
-
-		var yours = '';
-		var other = '';
-		var interest = '';
-
-		yours = document.getElementById("yourPlace").value;
-		other = document.getElementById("otherPlace").value;
-		interest = document.getElementById("interestType").value;
-
-		findLatLong(yours, other, interest);
-	}
-
 	function findLatLong(yours, other, interest) {
 		var latitude = 0;
 		var longitude = 0;
