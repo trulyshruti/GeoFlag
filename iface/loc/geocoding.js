@@ -1,7 +1,7 @@
 
-    $(document).ready(function() { 
+    $(document).ready(function() {
 
-	}); 
+	});
 
     var sameLocation = false;
 
@@ -52,8 +52,7 @@
 			getLat(otherLoc, function(otherLat) {
 				getLon(yourLoc, function(yourLon) {
 					getLon(otherLoc, function(otherLon) {
-
-    						var sameLat = false;
+                            var sameLat = false;
                                 if (yourLat === otherLat)
                                 {
                                     sameLat = true;
