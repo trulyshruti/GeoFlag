@@ -3,6 +3,8 @@
 
 	}); 
 
+    var sameLocation = false;
+
     function getLat(address, callback) {
         if (address) {
             var geocoder = new google.maps.Geocoder();
@@ -51,8 +53,21 @@
 				getLon(yourLoc, function(yourLon) {
 					getLon(otherLoc, function(otherLon) {
 
-							var isLat = (yourLat === otherLat);
-							var isLon = (yourLon === otherLon);
+    						var sameLat = false;
+                                if (yourLat === otherLat)
+                                {
+                                    sameLat = true;
+                                }
+                            var sameLon = false;
+                                if (yourLon === otherLon)
+                                {
+                                    sameLon = true;
+                                }
+
+                            if (sameLat && sameLon)
+                            {
+                                sameLocation = true;
+                            }
 
 							finish();
 						});
@@ -62,10 +77,6 @@
     }
 
     function finish(){
-    	console.log();
+    	console.log("Same location? " + sameLocation);
     }
-
-
-
-
 
