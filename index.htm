@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>[TITLE]</title>
+    <title>Geoflag File</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 	<script src="js/jquery.js"></script>
+	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<style>
@@ -23,18 +24,58 @@
 	  p.no-margin{
 		margin-bottom: 0px;
 	  }
+	  .eighthundred{
+		height:850px;
+	  }
+	  .threehundred{
+		width:300px;
+	  }
 	</style>
   </head>
   <body>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="#">Kimijima Flag</a>
+          <a class="brand" href="#">Geoflagged File</a>
         </div>
       </div>
     </div>
 	<div class="container-fluid">
-		<div class="row-fluid">
+		<div class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<div class="hero-unit">
+					<h1>Geoflagging</h1>
+					<p>
+						1. Geoflag a file<br>
+						2. Someone captures the flag<br>
+						3. ???<br>
+						4. Profit<br>
+					</p>
+					<a class="btn btn-primary btn-large pull-right">Geoflag a File »</a>
+				</div>
+			</div>
+			<div class="span2"></div>
+		</div>
+		
+		<div class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<h2>1. Upload</h2>
+				<p> Pick a file to Geoflag. </p>
+				<p><a class="btn btn-primary btn-large pull-right threehundred">Flag File</a></p>
+			</div>
+			<div class="span2"></div>
+		</div>
+		
+		<div class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<h2>2. Add flags!</h2>
+				<p> Add a few "flags" for your followers to catch. Catching all the flags in a set will unlock the file.</p>
+				<p><a class="btn btn-primary btn-large pull-right threehundred">Add flag</a></p>
+			</div>
+			<div class="span2"></div>
 		</div>
 	</div>
   </body>
