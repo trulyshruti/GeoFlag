@@ -1,22 +1,24 @@
 
-var url = "";
-var urlStart = "https://maps.google.com/maps/myplaces?hl=en&amp;ctz=300&amp;ie=UTF8&amp;ll=";
-var urlEnd = "&spn=0.008754,0.017681&ctz=300&t=m&z=16&iwloc=A";
+var latit = 0;
+var longit = 0;
 
-var iframeCode = "";
-var iWidth = "<iframe width=\">";
-var iHeight = "\" height=\"";
-var iUrl = " frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"";
-var iLink = "\"></iframe><br /><small><a href=\"";
-var iStyle = "\" style=\"color:#0000FF;text-align:left\">View Larger Map</a></small>";
-
-function setUrlByLL(latitude, longitude) {
-	var ll = "" + latitude + ", " + longitude;
-	url = urlStart + ll + urlEnd;
+function setLat (lati) {
+	latit = lati;
 }
 
-function setIframe (url, width, height) {
-	iframeCode = iWidth + width + iHeight + height + iURL + url + iLink + url + iStyle;
+function setLon (longi) {
+	longit = longi;
 }
 
+var mapOptions = {
+    center: new google.maps.LatLng(latit, longit),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+var markerOptions = {
+    position: new google.maps.LatLng(latit, longit)
+};
+var marker = new google.maps.Marker(markerOptions);
+marker.setMap(map);
