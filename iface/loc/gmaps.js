@@ -1,6 +1,6 @@
 
 var url = "";
-var urlStart = "https://maps.google.com/maps/myplaces?hl=en";
+var urlStart = "https://maps.google.com/maps/myplaces?hl=en&amp;ctz=300&amp;ie=UTF8&amp;ll=";
 var urlEnd = "&spn=0.008754,0.017681&ctz=300&t=m&z=16&iwloc=A";
 
 var iframeCode = "";
