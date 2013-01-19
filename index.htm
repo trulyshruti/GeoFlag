@@ -53,7 +53,8 @@
       if (response.status === 'connected') {
          var uid = response.authResponse.userID;
          var accessToken = response.authResponse.accessToken;
-	 FB.api('/me', function(response) {
+	 console.log(accessToken);
+	FB.api('/me', function(response) {
 		document.getElementById("fb_loggedin").style.display = "";
 		document.getElementById("fb_name").appendChild(document.createTextNode(response.name));
 	 });
