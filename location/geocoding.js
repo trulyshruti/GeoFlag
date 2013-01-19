@@ -37,7 +37,6 @@
             });
         	}
         else {
-           	// error('Please enter an address');
 			callback(0);
 		}
     }
@@ -46,51 +45,27 @@
     	getLocation();
     }
 
-	function clearForm() {
-		$("#names").empty();
-	}
-
-	function formSubmit() {
-		$("#names").empty();
-
-		var yours = '';
-		var other = '';
-		var interest = '';
-
-		yours = document.getElementById("yourPlace").value;
-		other = document.getElementById("otherPlace").value;
-		interest = document.getElementById("interestType").value;
-
-		findLatLong(yours, other, interest);
-	}
-
-	function findLatLong(yours, other, interest) {
-		var latitude = 0;
-		var longitude = 0;
-
-		var yourLoc = yours;
-		var otherLoc = other;
-		var poi = interest;
-
-		var latitude = 0;
-		var longitude = 0;
-
-		getLat(yourLoc, function(yourLat) {
+    function isThere(yourLoc, otherLoc) {
+    	getLat(yourLoc, function(yourLat) {
 			getLat(otherLoc, function(otherLat) {
 				getLon(yourLoc, function(yourLon) {
 					getLon(otherLoc, function(otherLon) {
 
-							latitude = (yourLat + otherLat)/2;
+							var isLat = (yourLat === otherLat);
+							var isLon = (yourLon === otherLon);
 
-							longitude = (yourLon + otherLon)/2;
-
-							printLocs(latitude, longitude, interest);
+							finish();
 						});
 					});
 				});
 			});
+    }
 
-	    }
-	}
+    function finish(){
+    	console.log();
+    }
+
+
+
 
 
