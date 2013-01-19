@@ -18,7 +18,7 @@ var mapOptions = {
 var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 var markerOptions = {
-    position: new google.maps.LatLng(37.7831, -122.4039)
+    position: new google.maps.LatLng(latit, longit)
 };
 var marker = new google.maps.Marker(markerOptions);
 marker.setMap(map);
