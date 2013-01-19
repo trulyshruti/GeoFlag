@@ -8,6 +8,7 @@
     <meta name="author" content="">
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+	<script src="iface/geotag.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<style>
@@ -63,7 +64,7 @@
 			<div class="span8">
 				<h2>1. Upload</h2>
 				<p> Pick a file to Geoflag. </p>
-				<p><a class="btn btn-primary btn-large pull-right threehundred">Flag File</a></p>
+				<p><a id="pickerbtn" class="btn btn-primary btn-large pull-right threehundred">Flag File</a></p>
 			</div>
 			<div class="span2"></div>
 		</div>
@@ -74,6 +75,16 @@
 				<h2>2. Add flags!</h2>
 				<p> Add a few "flags" for your followers to catch. Catching all the flags in a set will unlock the file.</p>
 				<p><a class="btn btn-primary btn-large pull-right threehundred">Add flag</a></p>
+			</div>
+			<div class="span2"></div>
+		</div>
+		
+		<div class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<h2>3. Done</h2>
+				<p> Hooray!</p>
+				<p><a class="btn btn-primary btn-large pull-right threehundred">Geoflag another file</a></p>
 			</div>
 			<div class="span2"></div>
 		</div>
