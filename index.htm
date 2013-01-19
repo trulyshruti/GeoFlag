@@ -2,11 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>[TITLE]</title>
+    <title>Geoflag File</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+	<script src="credentials.js"></script>
 	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+	<script src="iface/geotag.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<style>
@@ -23,18 +27,91 @@
 	  p.no-margin{
 		margin-bottom: 0px;
 	  }
+	  .eighthundred{
+		height:700px;
+		padding-top:50px;
+	  }
+	  .threehundred{
+		width:300px;
+	  }
 	</style>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
+     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="brand" href="#">Kimijima Flag</a>
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">GeoFlagging</a>
+          <div class="nav-collapse collapse">
+          </div>
         </div>
       </div>
-    </div>
-	<div class="container-fluid">
-		<div class="row-fluid">
+     </div>
+	<div  class="container-fluid">
+		<div id="section1" class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<div class="hero-unit">
+					<h1>Geoflagging</h1>
+					<a id="startbtn" class="btn btn-primary btn-large pull-right">Geoflag a File »</a>
+					<p>
+						1. Geoflag a file<br>
+						2. Someone captures the flag<br>
+						3. ???<br>
+						4. Profit<br>
+					</p>
+					
+				</div>
+			</div>
+			<div class="span2"></div>
+		</div>
+		
+		<div id="section2" style="display:none;" class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<h2>1. Choose File</h2>
+				<p> Pick a file to Geoflag. </p>
+				<p id ="fileselection"> </p>
+				<p><a id="pickerbtn" class="btn btn-primary btn-large pull-right threehundred">Flag Me</a></p>
+			</div>
+			<div class="span2"></div>
+		</div>
+		
+		<div id="section3" style="display:none;" class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<h2>2. Add flags!</h2>
+				<p> Add a few "flags" for your followers to catch. Catching all the flags in a set will unlock the file.</p>
+				<p><a id="addflagbtn" class="btn btn-primary btn-large pull-right threehundred">Add flag</a></p>
+				<div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">Add GeoFlag</h3>
+				  </div>
+				  <div class="modal-body">
+					<p>Please select the Geolocation for the flag trigger: </p>
+				  </div>
+				  <div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+					<button class="btn btn-primary">Add</button>
+				  </div>
+				</div>
+			</div>
+			<div class="span2"></div>
+		</div>
+		
+		<div id="section4" style="display:none;" class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<h2>3. Done</h2>
+				<p> Hooray!</p>
+				<p><a class="btn btn-primary btn-large pull-right threehundred">Geoflag another file</a></p>
+			</div>
+			<div class="span2"></div>
 		</div>
 	</div>
   </body>
