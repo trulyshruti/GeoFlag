@@ -15,6 +15,7 @@ function smoothScrollTo(e){
 window.addEventListener("load",function(){
 	filepicker.setKey(KEY_FILEPICKER);
 	window.scrollTo(0,0);
+	
 	_("startbtn").addEventListener("click",function(){
 		_("section2").style.display = "";
 		smoothScrollTo("section2");

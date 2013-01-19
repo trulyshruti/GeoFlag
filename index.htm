@@ -39,7 +39,7 @@
 
 <!-- Facebook API -->
 
-<div id="fb-root"></div>
+<!--<div id="fb-root"></div>-->
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -55,7 +55,7 @@
          var accessToken = response.authResponse.accessToken;
 	 FB.api('/me', function(response) {
 		document.getElementById("fb_loggedin").style.display = "";
-		document.getElementById("fb_name").innerText=response.name;
+		document.getElementById("fb_name").appendChild(document.createTextNode(response.name));
 	 });
       } else if (response.status === 'not_authorized') {
          window.location.href = "login.htm"
@@ -65,18 +65,13 @@
     });
 
   };
-
-  // Load the SDK's source Asynchronously
-  // Note that the debug version is being actively developed and might 
-  // contain some type checks that are overly strict. 
-  // Please report such bugs using the bugs tool.
   (function(d, debug){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;
      js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
      ref.parentNode.insertBefore(js, ref);
-   }(document, /*debug*/ false));
+   }(document, false));
 </script>
 
 <!-- End Facebook API -->
@@ -98,6 +93,7 @@
 		  </div>
       </div>
      </div>
+	 </div>
 	 
 	<div class="container-fluid margin40">
 		<div id="section1" class="row-fluid eighthundred">
