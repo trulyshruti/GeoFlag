@@ -42,28 +42,24 @@
 <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
-    // init the FB JS SDK
     FB.init({
-      appId      : '491100257598268', // App ID from the App Dashboard
-      channelUrl : '//geoflag.railgun.in/channel.htm', // Channel File for x-domain communication
-      status     : true, // check the login status upon init?
-      cookie     : true, // set sessions cookies to allow your server to access the session?
-      xfbml      : true  // parse XFBML tags on this page?
+      appId      : '491100257598268', 
+      channelUrl : '//geoflag.railgun.in/channel.htm', 
+      status     : true, 
+      cookie     : true, 
+      xfbml      : true  
     });
-
-    // Additional initialization code such as adding Event Listeners goes here
-    
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-         // connected
          var uid = response.authResponse.userID;
          var accessToken = response.authResponse.accessToken;
-	 FB.api('/me', function(response) {document.getElementById("fb_name").innerHTML=response.name;});
-         
+	 FB.api('/me', function(response) {
+		document.getElementById("fb_loggedin").style.display = "";
+		document.getElementById("fb_name").innerText=response.name;
+	 });
       } else if (response.status === 'not_authorized') {
          window.location.href = "login.htm"
       } else {
-         // not_logged_in
          window.location.href = "login.htm"
       }
     });
@@ -96,12 +92,10 @@
           </button>
           <a class="brand" href="./index.htm">GeoFlagging</a>
           <div class="nav-collapse collapse">
-          </div>  
-<div class="navbar-form pull-right">
-            <a class="span2"> Welcome <div id=fb_name></div>! (log out) </a>
-	</div>
-        </div>
-        
+			<p id ="fb_loggedin" style="display:none;" class="navbar-text pull-right">
+				Logged in as <a href="#" class="navbar-link" id="fb_name"></a>
+			</p>
+		  </div>
       </div>
      </div>
 	 
