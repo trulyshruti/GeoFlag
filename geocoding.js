@@ -37,7 +37,6 @@
             });
         	}
         else {
-           	// error('Please enter an address');
 			callback(0);
 		}
     }
@@ -46,33 +45,5 @@
     	getLocation();
     }
 
-	function findLatLong(yours, other, interest) {
-		var latitude = 0;
-		var longitude = 0;
-
-		var yourLoc = yours;
-		var otherLoc = other;
-		var poi = interest;
-
-		var latitude = 0;
-		var longitude = 0;
-
-		getLat(yourLoc, function(yourLat) {
-			getLat(otherLoc, function(otherLat) {
-				getLon(yourLoc, function(yourLon) {
-					getLon(otherLoc, function(otherLon) {
-
-							latitude = (yourLat + otherLat)/2;
-
-							longitude = (yourLon + otherLon)/2;
-
-							printLocs(latitude, longitude, interest);
-						});
-					});
-				});
-			});
-
-	    }
-	}
 
 
