@@ -1,9 +1,18 @@
 
-    $(document).ready(function() { 
+    $(document).ready(function() {
 
-	}); 
+	});
 
     var sameLocation = false;
+
+    function getPOI(address)
+    {
+        var URL = "https://api.tomtom.com/lbs/geocoding/geocode?key=a3babawt8pxy7h59mht2hnaq&query=";
+        URL += address;
+        var POI = $.get(URL, function(data){
+    	console.log(data);
+        });
+    }
 
     function getLat(address, callback) {
         if (address) {
