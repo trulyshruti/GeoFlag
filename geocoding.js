@@ -45,5 +45,27 @@
     	getLocation();
     }
 
+    function isThere(yourLoc, otherLoc) {
+    	getLat(yourLoc, function(yourLat) {
+			getLat(otherLoc, function(otherLat) {
+				getLon(yourLoc, function(yourLon) {
+					getLon(otherLoc, function(otherLon) {
+
+							var isLat = (yourLat === otherLat);
+							var isLon = (yourLon === otherLon);
+
+							finish();
+						});
+					});
+				});
+			});
+    }
+
+    function finish(){
+    	console.log();
+    }
+
+
+
 
 
