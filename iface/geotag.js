@@ -18,7 +18,6 @@ window.addEventListener("load",function(){
 	_("startbtn").addEventListener("click",function(){
 		_("section2").style.display = "";
 		smoothScrollTo("section2");
-		alert("foot");
 	});
 	_("addflagbtn").addEventListener("click",function(){
 		$("#addModal").modal();
