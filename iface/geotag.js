@@ -1,6 +1,7 @@
 var Main = {
 	fileSelection:{}
 }
+var _ = function(e){return document.getElementById(e);}
 function smoothScrollTo(e){
 	var elm = document.getElementById(e);
 	if(elm == null) return;
@@ -13,14 +14,14 @@ function smoothScrollTo(e){
 window.addEventListener("load",function(){
 	filepicker.setKey(KEY_FILEPICKER);
 	window.scrollTo(0,0);
-	$("#startbtn").bind("click",function(){
-		$("#section2").css("display","");
+	_("startbtn").addEventListener("click",function(){
+		_("section2").style.display = "";
 		smoothScrollTo("section2");
 	});
-	$("#addflagbtn").bind("click",function(){
+	_("addflagbtn").addEventListener("click",function(){
 		$("#addModal").modal();
 	});
-	$("#pickerbtn").bind("click",function(){
+	_("pickerbtn").addEventListener("click",function(){
 		filepicker.pick({},function(g){
 			$("#section3").css("display","");
 			smoothScrollTo("section3");
