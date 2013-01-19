@@ -1,5 +1,6 @@
 var Main = {
-	fileSelection:{}
+	fileSelection:"",
+	coords:{lat:0,lon:0}
 }
 var _ = function(e){return document.getElementById(e);}
 function smoothScrollTo(e){
@@ -21,14 +22,28 @@ window.addEventListener("load",function(){
 		smoothScrollTo("section2");
 	});
 	_("addflagbtn").addEventListener("click",function(){
-		$("#addModal").modal();
+		GeoLo.getLocation(function(coords){
+			var ifr = GeoLo.getMap("gmap", coords.latitude, coords.longitude);
+			Main.coords.lat = coords.latitude;
+			Main.coords.lon = coords.longitude;
+			$("#addModal").modal();
+			_("markbtn").addEventListener("click",function(){
+				alert("foo");
+			});
+			_("addressSearchBtn").addEventListener("click",function(){
+				GeoLo.getAddress(_("locationName").value,function(coords){
+					if(coords.longitude != 0 && coords.latitude != 0)
+						GeoLo.getMap("gmap", coords.latitude, coords.longitude);
+				});
+			});
+		})
 	});
 	_("pickerbtn").addEventListener("click",function(){
 		filepicker.pick({},function(g){
 			$("#section3").css("display","");
 			smoothScrollTo("section3");
 			$("#fileselection").text("You've selected \"" + g.filename + "\"!");
-			fileSelection = g;
+			Main.fileSelection = g;
 		},function(h){
 			
 		});

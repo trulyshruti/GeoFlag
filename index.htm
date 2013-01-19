@@ -8,6 +8,8 @@
     <meta name="author" content="">
 	<script src="credentials.js"></script>
 	<script src="js/jquery.js"></script>
+	<script src="http://maps.google.com/maps/api/js?sensor=false"> </script>
+	<script src="iface/loc/geolocation.js"></script>
 	<script src="js/bootstrap-modal.js"></script>
 	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 	<script src="iface/geotag.js"></script>
@@ -33,13 +35,20 @@
 	  .margin40{
 		padding-top:40px;
 	  }
+	  #filepicker_dialog_container{
+		top:60px !important;
+	  }
+	  #gmap{
+		width:510px;
+		height:330px;
+	  }
 	</style>
   </head>
   <body>
 
 <!-- Facebook API -->
 
-<!--<div id="fb-root"></div>-->
+<div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -136,12 +145,19 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					<h3 id="myModalLabel">Add GeoFlag</h3>
 				  </div>
-				  <div class="modal-body">
-					<p>Please select the Geolocation for the flag trigger: </p>
+				  <div id="addModalBody" class="modal-body">
+					<p>Please select the Geolocation for the flag trigger: 
+					<div class="input-append">
+					  <input id="locationName" type="text" placeholder="My Location">
+					  <a id="addressSearchBtn" class="btn" href="javascript:;">Search</a>
+					</div>
+					<a id="timeBtn" class="btn" href="javascript:;">Flag Life</a>
+					</p>
+					<div id="gmap"></div>
 				  </div>
 				  <div class="modal-footer">
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-					<button class="btn btn-primary">Add</button>
+					<button id="markbtn" class="btn btn-primary">Flag!</button>
 				  </div>
 				</div>
 			</div>
