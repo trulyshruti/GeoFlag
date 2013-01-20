@@ -54,7 +54,7 @@ function onLoaded(){
 					_("opend").appendChild(litem);
 				}
 				if(i == 0){
-					_("opend").appendChild(document.createTextElement("None yet. Ganbarinasai!"));
+					_("opend").appendChild(document.createTextNode("None yet. Ganbarinasai!"));
 				}
 			}
 		};
