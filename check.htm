@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<script src="credentials.js"></script>
-	<script src="iface/loc/check.js"></script>
+	<script src="iface/loc/geolocation.js"></script>
 	<script src="iface/check.js"></script>
 	<script src="js/jquery.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 		margin-bottom: 0px;
 	  }
 	  .eighthundred{
-		height:800px;
+		min-height:200px;
 		padding-top:50px;
 	  }
 	  .threehundred{
@@ -31,6 +31,19 @@
 	  }
 	  .margin40{
 		padding-top:40px;
+	  }
+	  .green-hero{
+		background: #afa;
+	  }
+	  .hero-columblue{
+		background: #75b2dd;
+	  }
+	  a{
+		text-decoration: none;
+		color:#000;
+	  }
+	  a:hover{
+		text-decoration:underline;
 	  }
 	</style>
   </head>
@@ -99,9 +112,20 @@
 		<div id="section1" class="row-fluid eighthundred">
 			<div class="span2"></div>
 			<div class="span8">
-				<div class="hero-unit">
-					<h2>Waiting...</h2>
-					<p>No flags captured yet.</p>
+				<div id="hero" class="hero-unit">
+					<h2 id="fname">Waiting...</h2>
+					<p id="linkaddr">No flags captured yet.</p>
+				</div>
+			</div>
+			<div class="span2"></div>
+		</div>
+		<div id="section2" class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<div class="hero-unit hero-columblue">
+					<h2>Unlocked :</h2>
+					<ul id="opend">
+					</ul>
 				</div>
 			</div>
 			<div class="span2"></div>
