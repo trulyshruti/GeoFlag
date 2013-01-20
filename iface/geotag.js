@@ -42,6 +42,7 @@ window.addEventListener("load",function(){
 							return;
 						}
 						if(x.status == 200){
+							$("#addModal").modal("hide");
 							_("section4").style.display = "";
 							smoothScrollTo("section4");
 						}
