@@ -51,13 +51,13 @@ error_reporting(E_ALL);
 		 $newFile['rule'] = array();
                  $newFile['rule'][0] = array();
                  $newFile['rule'][0]['lat'] = $_POST['lat'];
-                 $newFfile['rule'][0]['lng'] = $_POST['lng'];
+                 $newFile['rule'][0]['lng'] = $_POST['lng'];
                  if (isset($_POST['startTime']))
                     $newFile['rule'][0]['startTime'] = new MongoDate(strtotime($_POST['startTime']));
                  if (isset($_POST['endTime']))
                     $newFile['rule'][0]['endTime'] = new MongoDate(strtotime($_POST['endTime']));
                  
-                 $files->insert($file);
+                 $files->insert($newFile);
 
 		 echo "{'status':200}";
                  break;
