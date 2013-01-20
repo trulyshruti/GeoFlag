@@ -95,7 +95,9 @@ error_reporting(E_ALL);
 		 $iter = $opened -> find(array("user" => $uid));
 		 foreach ( $iter as $oldId => $oldFile )
 		 {
-		 	$ans[] = $files->findone(array("id" => $oldFile['id']));
+		 	$temp = $files->findone(array("id" => $oldFile['id']));
+			if ($temp['owner']==$uid) $temp['self']=true;
+			$ans[] = $temp;
 		 }
 		 echo json_encode($ans);
 		 break;

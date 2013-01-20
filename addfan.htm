@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Geoflag File</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<script src="credentials.js"></script>
+	<script src="js/jquery.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<style>
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+	  .progress.min-margin {
+		margin-bottom: 5px;
+	  }
+	  p.no-margin{
+		margin-bottom: 0px;
+	  }
+	  .eighthundred{
+		min-height:200px;
+		padding-top:50px;
+	  }
+	  .threehundred{
+		width:300px;
+	  }
+	  .margin40{
+		padding-top:40px;
+	  }
+	  .green-hero{
+		background: #afa;
+	  }
+	  .hero-columblue{
+		background: #75b2dd;
+	  }
+	  a{
+		text-decoration: none;
+		color:#000;
+	  }
+	  a:hover{
+		text-decoration:underline;
+	  }
+	</style>
+  </head>
+  <body>
+
+<!-- Facebook API -->
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '491100257598268', 
+      channelUrl : '//geoflag.railgun.in/channel.htm', 
+      status     : true, 
+      cookie     : true, 
+      xfbml      : true  
+    });
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+         var uid = response.authResponse.userID;
+         accessToken = response.authResponse.accessToken;
+		 
+	 FB.api('/me', function(response) {
+		document.getElementById("fb_loggedin").style.display = "";
+		document.getElementById("fb_name").appendChild(document.createTextNode(response.name));
+	 });
+      } else if (response.status === 'not_authorized') {
+         window.location.href = "login.htm"
+      } else {
+         window.location.href = "login.htm"
+      }
+    });
+
+  };
+  (function(d, debug){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document, false));
+</script>
+
+<!-- End Facebook API -->
+
+
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.htm">GeoFlagging</a>
+          <div class="nav-collapse collapse">
+			<p id ="fb_loggedin" style="display:none;" class="navbar-text pull-right">
+				Logged in as <a href="check.htm" class="navbar-link" id="fb_name"></a>
+			</p>
+		  </div>
+      </div>
+     </div>
+	 </div>
+	 
+	<div class="container-fluid margin40">
+		<div id="section1" class="row-fluid eighthundred">
+			<div class="span2"></div>
+			<div class="span8">
+				<form id="hero" class="hero-unit">
+					<h2 class="fname">Follow your friend!</h2>
+					<input type="text" class="input-block-level" placeholder="Friend ID">
+        				<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+      				</form>
+			</div>
+			<div class="span2"></div>
+		</div>
+	</div>
+  </body>
+</html>
