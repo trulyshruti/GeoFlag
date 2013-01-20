@@ -79,7 +79,10 @@ error_reporting(E_ALL);
 					if (distance($file['rule'][0]['lat'], $file['rule'][0]['lng'], $lat, $lng))
 						if (!isset($file['rule'][0]['startTime']) || $file['rule'][0]['startTime']<time())
 							if (!isset($file['rule'][0]['endTime']) || $file['rule'][0]['endTime']>time())
+							{
 								$ans[] = $file;
+								$opened->insert(array("user" => $uid, "id" => $file['id']));
+							}
 				}
                        }
                  }
