@@ -66,6 +66,7 @@
          var uid = response.authResponse.userID;
          var accessToken = response.authResponse.accessToken;
 		 Main.accessToken = accessToken;
+		 Main.uid = uid;
 	 FB.api('/me', function(response) {
 		document.getElementById("fb_loggedin").style.display = "";
 		document.getElementById("fb_name").appendChild(document.createTextNode(response.name));
@@ -101,7 +102,7 @@
           <a class="brand" href="./index.htm">GeoFlag</a>
           <div class="nav-collapse collapse">
 			<p id ="fb_loggedin" style="display:none;" class="navbar-text pull-right">
-				Logged in as <a href="check.htm" class="navbar-link" id="fb_name"></a> | <a href="addfan.htm">Add Friends</a>
+				Logged in as <a href="check.htm" class="navbar-link" style="color:#fff;" id="fb_name"></a> | <a style="color:#fff;" href="addfan.htm">Add Friends</a>
 			</p>
 		  </div>
       </div>
@@ -113,13 +114,10 @@
 			<div class="span2"></div>
 			<div class="span8">
 				<div class="hero-unit">
-					<h1>GeoFlag</h1>
+					<h1>GeoFlags</h1>
 					<a id="startbtn" class="btn btn-primary btn-large pull-right" href="javascript:;">GeoFlag a File »</a>
 					<p>
-						1. Geoflag a file<br>
-						2. Someone captures the flag<br>
-						3. ???<br>
-						4. Profit<br>
+						1) Choose a File<br> 2) Flag it up<br> 3) Call a friend<br> 4) Share the fun
 					</p>
 					
 				</div>
@@ -131,8 +129,8 @@
 			<div class="span2"></div>
 			<div class="span8">
 				<h2>1. Choose File</h2>
-				<p> Pick a file to Geoflag. </p>
-				<p id ="fileselection"> </p>
+				<p> Pick a file to GeoFlag. </p>
+				<h3 id ="fileselection"></h3>
 				<p><a id="pickerbtn" class="btn btn-primary btn-large pull-right threehundred" href="javascript:;">Flag Me</a></p>
 			</div>
 			<div class="span2"></div>
@@ -168,11 +166,12 @@
 			<div class="span2"></div>
 		</div>
 		
-		<div id="section4" style="display:none;" class="row-fluid eighthundred">
+		<div id="section4" style="display:none;background:url(img/bg-sct4.png) no-repeat;" class="row-fluid eighthundred">
 			<div class="span2"></div>
 			<div class="span8">
 				<h2>3. Done</h2>
-				<p> Hooray! Hooray! 二维码</p>
+				<p> Hooray! Hooray! You've now GeoFlagged a file. Let others subscribe to your flags: </p>
+				<h2 id="fbid">(THIS IS YOUR ID)</h2>
 				<p><a id="finishRetBtn" class="btn btn-primary btn-large pull-right threehundred">Geoflag another file</a></p>
 			</div>
 			<div class="span2"></div>

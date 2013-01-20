@@ -3,7 +3,9 @@ var Main = {
 	coords:{lat:0,lon:0},
 	timeBegin:"",
 	timeEnd:"",
-	accessToken:""
+	accessToken:"",
+	uid: 0,
+	requestSent: false
 }
 var _ = function(e){return document.getElementById(e);}
 function smoothScrollTo(e){
@@ -39,21 +41,28 @@ window.addEventListener("load",function(){
 							var x = JSON.parse(xhr.responseText);
 						}catch(e){
 							console.log("Parse Error");
+							Main.requestSent = false;
 							return;
 						}
 						if(x.status == 200){
 							$("#addModal").modal("hide");
 							_("section4").style.display = "";
 							smoothScrollTo("section4");
+							_("fbid").innerHTML = Main.uid;
 						}
+						Main.requestSent = false;
 					}
 				};
 				xhr.open("POST","server/?token=" + Main.accessToken, true);
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhr.send("action=add&lat=" + Main.coords.lat + "&lng=" + Main.coords.lon + "&fileName=" + encodeURIComponent(Main.fileSelection.filename) 
-					+ "&url=" + encodeURIComponent(Main.fileSelection.url) 
-					+ ((Main.timeBegin != null && Main.timeBegin != "") ? "&startTime=" + Main.timeBegin : "") 
-					+ ((Main.timeEnd != null && Main.timeEnd != "") ? "&endTime=" + Main.timeEnd : ""));
+				if(!Main.requestSent){
+					xhr.send("action=add&lat=" + Main.coords.lat + "&lng=" + Main.coords.lon + "&fileName=" 
+						+ encodeURIComponent(Main.fileSelection.filename) 
+						+ "&url=" + encodeURIComponent(Main.fileSelection.url) 
+						+ ((Main.timeBegin != null && Main.timeBegin != "") ? "&startTime=" + Main.timeBegin : "") 
+						+ ((Main.timeEnd != null && Main.timeEnd != "") ? "&endTime=" + Main.timeEnd : ""));
+					Main.requestSent = true;
+				}
 			});
 			_("addressSearchBtn").addEventListener("click",function(){
 				GeoLo.getAddress(_("locationName").value,function(coords){
@@ -90,7 +99,8 @@ window.addEventListener("load",function(){
 			coords:{lat:0,lon:0},
 			timeBegin:"",
 			timeEnd:"",
-			accessToken:Main.accessToken
+			accessToken:Main.accessToken,
+			requestSent: false
 		}
 	});
 	_("pickerbtn").addEventListener("click",function(){
