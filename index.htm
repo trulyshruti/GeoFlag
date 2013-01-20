@@ -41,6 +41,7 @@
 	  #gmap{
 		width:510px;
 		height:330px;
+		margin-top:2px;
 	  }
 	</style>
   </head>
@@ -62,6 +63,7 @@
       if (response.status === 'connected') {
          var uid = response.authResponse.userID;
          var accessToken = response.authResponse.accessToken;
+		 Main.accessToken = accessToken;
 	 FB.api('/me', function(response) {
 		document.getElementById("fb_loggedin").style.display = "";
 		document.getElementById("fb_name").appendChild(document.createTextNode(response.name));
@@ -97,7 +99,7 @@
           <a class="brand" href="./index.htm">GeoFlagging</a>
           <div class="nav-collapse collapse">
 			<p id ="fb_loggedin" style="display:none;" class="navbar-text pull-right">
-				Logged in as <a href="#" class="navbar-link" id="fb_name"></a>
+				Logged in as <a href="check.htm" class="navbar-link" id="fb_name"></a>
 			</p>
 		  </div>
       </div>
@@ -147,11 +149,11 @@
 				  </div>
 				  <div id="addModalBody" class="modal-body">
 					<p>Please select the Geolocation for the flag trigger: 
-					<div class="input-append">
+					<div class="input-append pull-left">
 					  <input id="locationName" type="text" placeholder="My Location">
 					  <a id="addressSearchBtn" class="btn" href="javascript:;">Search</a>
 					</div>
-					<a id="timeBtn" class="btn" href="javascript:;">Flag Life</a>
+					<a id="timeBtn" class="btn inline pull-right" style="margin-right:10px;" href="javascript:;">Flag Life</a>
 					</p>
 					<div id="gmap"></div>
 				  </div>

@@ -1,6 +1,9 @@
 var Main = {
 	fileSelection:"",
-	coords:{lat:0,lon:0}
+	coords:{lat:0,lon:0},
+	timeBegin:"",
+	timeEnd:"",
+	accessToken:""
 }
 var _ = function(e){return document.getElementById(e);}
 function smoothScrollTo(e){
@@ -28,13 +31,50 @@ window.addEventListener("load",function(){
 			Main.coords.lon = coords.longitude;
 			$("#addModal").modal();
 			_("markbtn").addEventListener("click",function(){
-				alert("foo");
+				//Send ajax
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4){
+						try{
+							var x = JSON.parse(xhr.responseText);
+						}catch(e){
+							console.log("Parse Error");
+							return;
+						}
+						if(x.status == 200){
+							_("section4").style.display = "";
+							smoothScrollTo("section4");
+						}
+					}
+				};
+				xhr.open("POST","server/?token=" + Main.accessToken, true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhr.send("action=add&lat=" + Main.coords.lat + "&lng=" + Main.coords.lon + "&fileName=" + encodeURIComponent(Main.fileSelection.filename) 
+					+ "&url=" + encodeURIComponent(Main.fileSelection.url) 
+					+ (Main.startTime != null && Main.startTime != "" ? "&startTime=" + Main.startTime : "") 
+					+ (Main.endTime != null && Main.startTime != "" ? "&endTime=" + Main.endTime : ""));
 			});
 			_("addressSearchBtn").addEventListener("click",function(){
 				GeoLo.getAddress(_("locationName").value,function(coords){
-					if(coords.longitude != 0 && coords.latitude != 0)
+					if(coords.longitude != 0 && coords.latitude != 0){
 						GeoLo.getMap("gmap", coords.latitude, coords.longitude);
+						Main.coords.lat = coords.latitude;
+						Main.coords.lon = coords.longitude;
+					}
 				});
+			});
+			_("timeBtn").addEventListener("click",function(){
+				var x = prompt("Enter valid time: (YYYY-mm-dd HH:mm:ss|YYYY-mm-dd HH:mm:ss)");
+				if(x != null){
+					var y = x.split("|");
+					if(y == null || y.length < 2){
+						alert("Invalid input!");
+					}else{
+						Main.timeBegin = y[0];
+						Main.timeEnd = y[1];
+						alert("Saved!");
+					}
+				}
 			});
 		})
 	});

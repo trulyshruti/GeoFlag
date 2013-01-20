@@ -16,7 +16,7 @@ var GeoLo = new function(){
 	this.getMap = function (elem, lat, lon) {
 		var mapOptions = {
 			center: new google.maps.LatLng(lat,lon),
-			zoom: 20,
+			zoom: 16,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};                   
 		var map = new google.maps.Map(document.getElementById(elem), mapOptions);
