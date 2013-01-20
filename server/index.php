@@ -65,10 +65,11 @@ error_reporting(E_ALL);
                  
 		 $lat = $_POST['lat'];
 		 $lng = $_POST['lng'];
-		 
+	
 		 $ans = array();
-
+		
                  $iter = $userLink -> find(array("from" => $uid));
+		//var_dump($iter);
                  foreach ( $iter as $linkId => $link )
                  {
                        $jter = $files -> find(array("owner" => $link["to"]));
@@ -77,8 +78,8 @@ error_reporting(E_ALL);
 				if ($opened -> findone(array("user" => $uid, "id" => $file['id'])) == NULL)
 				{
 					if (distance($file['rule'][0]['lat'], $file['rule'][0]['lng'], $lat, $lng))
-						if (!isset($file['rule'][0]['startTime']) || $file['rule'][0]['startTime']<time())
-							if (!isset($file['rule'][0]['endTime']) || $file['rule'][0]['endTime']>time())
+						if (!isset($file['rule'][0]['startTime']) || strtotime($file['rule'][0]['startTime'])<time())
+							if (!isset($file['rule'][0]['endTime']) || strtotime($file['rule'][0]['endTime'])>time())
 							{
 								$ans[] = $file;
 								$opened->insert(array("user" => $uid, "id" => $file['id']));
@@ -88,6 +89,15 @@ error_reporting(E_ALL);
                  }
 		 echo json_encode($ans);
                  break;
+     case 'checkOld':
+		 $ans = array();
+		 $iter = $opened -> find(array("user" => $uid));
+		 foreach ( $iter as $oldId => $oldFile )
+		 {
+		 	$ans[] = $files->findone(array("user" => $uid, "id" => $oldFile['id']));
+		 }
+		 echo json_encode($ans);
+		 break;
      case 'nuts':
                  die("{\"status\":404}");
   };
