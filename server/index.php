@@ -58,7 +58,7 @@ error_reporting(E_ALL);
                     $newFile['rule'][0]['endTime'] = new MongoDate(strtotime($_POST['endTime']));
                  
                  $files->insert($newFile);
-		 $opened->insert(array("user" => $uid, "id" => $newFile['id']);
+		 $opened->insert(array("user" => $uid, "id" => $newFile['id']));
 
 		 echo "{\"status\":200}";
                  break;
