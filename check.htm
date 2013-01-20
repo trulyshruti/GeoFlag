@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Geoflag File</title>
+    <title>GeoFlag</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -45,6 +45,9 @@
 	  a:hover{
 		text-decoration:underline;
 	  }
+	  .selfowned{
+		color: #fff;
+	  }
 	</style>
   </head>
   <body>
@@ -55,8 +58,8 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '491100257598268', 
-      channelUrl : '//geoflag.railgun.in/channel.htm', 
+      appId      : APPID_FACEBOOK,
+      channelUrl : APPBRIDGE_FACEBOOK, 
       status     : true, 
       cookie     : true, 
       xfbml      : true  

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+	<script src="credentials.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -50,8 +51,8 @@
     // Additional JS functions here
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '491100257598268', // App ID
-        channelUrl : '//geoflag.railgun.in/channel.htm', // Channel File
+        appId      : APPID_FACEBOOK, // App ID
+        channelUrl : APPBRIDGE_FACEBOOK, // Channel File
         status     : false, // check login status
         cookie     : true, // enable cookies to allow the server to access the session
         xfbml      : true  // parse XFBML
@@ -83,11 +84,8 @@ function doLogin(){
         FB.login(function(response) {
 	  console.log(response);
           if (response.authResponse) {
-              // connected
-              //FB.Dialog.remove(FB.Dialog._active);
-	      window.location.href = "index.htm";
+			window.location.href = "index.htm";
           } else {
-              // cancelled
           }
       });
 }
@@ -98,13 +96,12 @@ function doLogin(){
     <div class="container">
 
       <div class="form-signin">
-        <!-- <h2 class="form-signin-heading">Please sign in</h2> -->
         <div align="center">
           <button class="btn btn-large btn-primary" type="submit" id="facebook_login">Sign in with Facebook</button> 
         </div>
       </div>
 
-    </div> <!-- /container -->
+    </div> 
 
   </body>
 </html>

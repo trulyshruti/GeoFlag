@@ -2,12 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Geoflag File</title>
+    <title>GeoFlag</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 	<script src="credentials.js"></script>
 	<script src="js/jquery.js"></script>
+	<script src="iface/addfollow.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<style>
@@ -53,8 +54,8 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '491100257598268', 
-      channelUrl : '//geoflag.railgun.in/channel.htm', 
+      appId      : APPID_FACEBOOK,
+      channelUrl : APPBRIDGE_FACEBOOK,
       status     : true, 
       cookie     : true, 
       xfbml      : true  
@@ -110,11 +111,17 @@
 		<div id="section1" class="row-fluid eighthundred">
 			<div class="span2"></div>
 			<div class="span8">
-				<form id="hero" class="hero-unit">
-					<h2 class="fname">Follow your friend!</h2>
-					<input type="text" class="input-block-level" placeholder="Friend ID">
-        				<button class="btn btn-large btn-primary" type="submit">Sign in</button>
-      				</form>
+				<div id="erroralert" style="display:none;" class="alert alert-block alert-error fade in">
+					<p id="errormsg"></p>
+				</div>
+				<div id="successalert" style="display:none;" class="alert alert-success">
+					<p>Congratulations! You have now subscribed!</p>
+				</div>
+				<div id="hero" class="hero-unit">
+					<h2 class="friendname">Subscribe to your friend's GeoFlags!</h2>
+					<input type="text" id="uid" class="input-block-level" placeholder="Friend ID">
+        			<a href="javascript:;" id="subscribebtn" class="btn btn-large btn-primary">Subscribe</a>
+      			</div>
 			</div>
 			<div class="span2"></div>
 		</div>
