@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<script src="credentials.js"></script>
+	<script src="iface/loc/check.js"></script>
+	<script src="iface/check.js"></script>
 	<script src="js/jquery.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -49,7 +51,8 @@
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
          var uid = response.authResponse.userID;
-         var accessToken = response.authResponse.accessToken;
+         accessToken = response.authResponse.accessToken;
+		 
 	 FB.api('/me', function(response) {
 		document.getElementById("fb_loggedin").style.display = "";
 		document.getElementById("fb_name").appendChild(document.createTextNode(response.name));

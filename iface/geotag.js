@@ -52,8 +52,8 @@ window.addEventListener("load",function(){
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhr.send("action=add&lat=" + Main.coords.lat + "&lng=" + Main.coords.lon + "&fileName=" + encodeURIComponent(Main.fileSelection.filename) 
 					+ "&url=" + encodeURIComponent(Main.fileSelection.url) 
-					+ (Main.startTime != null && Main.startTime != "" ? "&startTime=" + Main.startTime : "") 
-					+ (Main.endTime != null && Main.startTime != "" ? "&endTime=" + Main.endTime : ""));
+					+ ((Main.timeBegin != null && Main.timeBegin != "") ? "&startTime=" + Main.timeBegin : "") 
+					+ ((Main.timeEnd != null && Main.timeEnd != "") ? "&endTime=" + Main.timeEnd : ""));
 			});
 			_("addressSearchBtn").addEventListener("click",function(){
 				GeoLo.getAddress(_("locationName").value,function(coords){
@@ -78,6 +78,20 @@ window.addEventListener("load",function(){
 				}
 			});
 		})
+	});
+	_("finishRetBtn").addEventListener("click",function(){
+		smoothScrollTo("section1");
+		_("section2").style.display = "none";
+		_("section3").style.display = "none";
+		_("section4").style.display = "none";
+		$("#fileselection").text("");
+		Main = {
+			fileSelection:"",
+			coords:{lat:0,lon:0},
+			timeBegin:"",
+			timeEnd:"",
+			accessToken:Main.accessToken
+		}
 	});
 	_("pickerbtn").addEventListener("click",function(){
 		filepicker.pick({},function(g){
