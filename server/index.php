@@ -30,7 +30,7 @@ error_reporting(E_ALL);
   $facebook->setAccessToken($_GET['token']);
 
   $uid = $facebook->getUser();
-  if ($uid == 0) die("{'status':500}");
+  if ($uid == 0) die("{\"status\":500}");
 
   // MongoDB
 
@@ -59,7 +59,7 @@ error_reporting(E_ALL);
                  
                  $files->insert($newFile);
 
-		 echo "{'status':200}";
+		 echo "{\"status\":200}";
                  break;
      case 'check':
                  
@@ -86,7 +86,7 @@ error_reporting(E_ALL);
 		 echo json_encode($ans);
                  break;
      case 'nuts':
-                 die("{'status':404}");
+                 die("{\"status\":404}");
   };
 
 ?>
