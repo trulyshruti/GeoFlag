@@ -89,7 +89,7 @@ error_reporting(E_ALL);
                  }
 		 echo json_encode($ans);
                  break;
-     case 'checkOld':
+     case 'checkold':
 		 $ans = array();
 		 $iter = $opened -> find(array("user" => $uid));
 		 foreach ( $iter as $oldId => $oldFile )
