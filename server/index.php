@@ -94,7 +94,7 @@ error_reporting(E_ALL);
 		 $iter = $opened -> find(array("user" => $uid));
 		 foreach ( $iter as $oldId => $oldFile )
 		 {
-		 	$ans[] = $files->findone(array("user" => $uid, "id" => $oldFile['id']));
+		 	$ans[] = $files->findone(array("id" => $oldFile['id']));
 		 }
 		 echo json_encode($ans);
 		 break;
