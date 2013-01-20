@@ -102,7 +102,7 @@ error_reporting(E_ALL);
 		 echo json_encode($ans);
 		 break;
      case 'addfan':
-		 $userLink->insert(array("from" => $uid, "to" => $_PUSH['id']));
+		 $userLink->insert(array("from" => $uid, "to" => $_POST['id']));
 		 echo "{\"status\":200}";
 		 break;
      case 'nuts':
